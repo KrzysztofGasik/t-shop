@@ -1,0 +1,15 @@
+.dialogTitle {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-width: 300px;
+    width: 100%;
+}
+
+.dialogTitleIcon {
+    margin: 0 0 0 1rem;
+}
+
+.cartIcon {
+    margin: 0 1rem !important;
+}

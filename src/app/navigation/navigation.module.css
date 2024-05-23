@@ -1,0 +1,65 @@
+.wrapper {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 1;
+}
+
+.navigation {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+.title {
+    flex: 1 1 0;
+}
+
+.logo {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    color: inherit;
+    row-gap: 1rem;
+}
+
+.logoImage {
+    border-radius: 1rem;
+}
+
+.logoText {
+    display: inline-block;
+    margin-left: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.formSearch {
+    flex: none;
+}
+
+.searchInput {
+    width: 100%;
+    padding: .5rem 1rem;
+    min-width: 200px;
+}
+
+@media all and (max-width: 640px) {
+
+    .navigation {
+        flex-direction: column;
+    }
+
+    .logoImage {
+        display: none;
+    }
+
+    .logoText {
+        font-size: 2rem;
+        margin: 1rem auto;
+    }
+}

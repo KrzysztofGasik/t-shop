@@ -1,0 +1,66 @@
+.card {
+    width: 100%;
+    background-color: #fff;
+    transition-property: box-shadow;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: .5rem;
+    position: relative;
+    margin: 0 auto;
+}
+
+.card:hover {
+    filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+}
+
+.image {
+    height: auto;
+    object-fit: cover;
+    max-width: 100%;
+    margin: 1rem 0 0 0;
+}
+
+.textWrapper {
+    padding: 1rem;
+    text-decoration: none;
+    color: #000;
+}
+
+.title {
+    color: #000;
+    display: flex;
+    align-items: center;
+}
+
+.iconNew {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    background-color: #007fff;
+    color: #fff;
+    font-weight: bold;
+}
+
+.description {
+    color: #000;
+    margin: .5rem 0;
+}
+
+.price {
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 0;
+}
+
+.link {
+    text-decoration: none;
+    color: #000;
+    padding: .5rem 1rem;
+}

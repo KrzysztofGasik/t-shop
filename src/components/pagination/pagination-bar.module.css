@@ -1,0 +1,21 @@
+.bar {
+    margin: 1rem 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: auto;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.page,
+.activePage {
+    text-decoration: none;
+    color: black;
+    padding: .5rem .8rem;
+}
+
+.activePage {
+    pointer-events: none;
+    border-radius: 9999px;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-weight: bold;
+}
