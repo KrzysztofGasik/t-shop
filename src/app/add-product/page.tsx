@@ -2,10 +2,10 @@ import { TextareaAutosize, TextField } from "@mui/material";
 import { addProduct } from "@/actions/action";
 import SubmitButton from "@/app/add-product/submit-button";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import error from "./error";
 import classes from "./add-product.module.css";
+import { authOptions } from "@/app/lib/auth";
 
 export const metadata = {
   title: "T-shop | Add product",

@@ -8,7 +8,7 @@ import { getCart } from "@/lib/db/cart";
 import ShoppingCartButton from "@/app/navigation/shopping-cart-button";
 import UserMenuButton from "@/app/navigation/user-menu-button";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/lib/auth";
 
 async function searchProducts(formData: FormData) {
   "use server";
