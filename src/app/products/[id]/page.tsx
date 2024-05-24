@@ -44,14 +44,16 @@ export default async function ProductDetailPage({
   const { id: productId, name, description, imageUrl, price } = product;
   return (
     <div className={classes.product}>
-      <Image
-        src={`/${imageUrl}.jpg`}
-        alt={name}
-        width={500}
-        height={500}
-        className={classes.image}
-        priority
-      />
+      <figure>
+        <Image
+          src={`/${imageUrl}.jpg`}
+          alt={name}
+          width={500}
+          height={500}
+          className={classes.image}
+          priority
+        />
+      </figure>
       <div>
         <h1 className={classes.title}>{name}</h1>
         <ProductPrice price={price} className={classes.price} />

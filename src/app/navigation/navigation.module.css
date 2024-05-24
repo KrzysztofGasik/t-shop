@@ -39,7 +39,7 @@
 }
 
 .formSearch {
-    flex: none;
+    flex: 1 1;
 }
 
 .searchInput {
@@ -51,15 +51,19 @@
 @media all and (max-width: 640px) {
 
     .navigation {
-        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .logo {
+        justify-content: center;
     }
 
     .logoImage {
         display: none;
     }
 
-    .logoText {
-        font-size: 2rem;
-        margin: 1rem auto;
+    .searchInput {
+        min-width: 150px;
     }
 }

@@ -40,7 +40,7 @@ export default async function Navigation() {
         </p>
         <form className={classes.formSearch} action={searchProducts}>
           <TextField
-            placeholder="Search items..."
+            placeholder="Search..."
             className={classes.searchInput}
             aria-label="search"
             name="searchQuery"
@@ -54,8 +54,10 @@ export default async function Navigation() {
             }}
           />
         </form>
-        <ShoppingCartButton cart={cart} />
-        <UserMenuButton session={session} />
+        <div className={classes.buttonContainer}>
+          <ShoppingCartButton cart={cart} />
+          <UserMenuButton session={session} />
+        </div>
       </nav>
     </header>
   );
