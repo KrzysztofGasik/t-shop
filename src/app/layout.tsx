@@ -25,8 +25,8 @@ export default function RootLayout({
         <SessionProvider>
           <Navigation />
           <main className={classes.main}>{children}</main>
-          <Footer />
         </SessionProvider>
+        <Footer />
       </body>
     </html>
   );

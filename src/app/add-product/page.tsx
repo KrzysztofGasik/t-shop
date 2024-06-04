@@ -3,7 +3,7 @@ import { addProduct } from "@/actions/action";
 import SubmitButton from "@/app/add-product/submit-button";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import error from "./error";
+import ErrorPage from "./error";
 import classes from "./add-product.module.css";
 import { authOptions } from "@/app/lib/auth";
 
@@ -15,7 +15,7 @@ export default async function AddProductPage() {
   const session = await getServerSession(authOptions);
 
   if (session?.user.role !== "ADMIN") {
-    error();
+    return <ErrorPage />;
   }
 
   if (!session) {

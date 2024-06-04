@@ -48,6 +48,11 @@
     min-width: 200px;
 }
 
+.buttonContainer {
+    display: flex;
+    align-items: center;
+}
+
 @media all and (max-width: 640px) {
 
     .navigation {

@@ -12,7 +12,7 @@ export default async function Home({
 }: HomeProps) {
   const totalItemCount = await prisma.product.count();
   const currentPage = Number(page);
-  const pageSize = 2;
+  const pageSize = 4;
   const totalPages = Math.ceil(totalItemCount / pageSize);
 
   const products = await prisma.product.findMany({
