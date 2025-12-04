@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { Product } from "@prisma/client";
-import Link from "next/link";
-import Image from "next/image";
-import ProductPrice from "@/components/product/product-price";
+import { Product } from '@prisma/client';
+import Link from 'next/link';
+import Image from 'next/image';
+import ProductPrice from '@/components/product/product-price';
 
-import classes from "./product-card.module.css";
-import { Chip } from "@mui/material";
-import { motion } from "framer-motion";
+import classes from './product-card.module.css';
+import { Chip } from '@mui/material';
+import { motion } from 'framer-motion';
 
 export interface ProductProps {
   product: Product;
@@ -17,13 +17,14 @@ export default function ProductCard({ product }: ProductProps) {
   const { id, name, description, imageUrl, price, createdAt } = product;
   const isNewProduct =
     Date.now() - new Date(createdAt).getTime() < 1000 * 60 * 60 * 24 * 7;
+
   return (
     <Link href={`products/${id}`} className={classes.link}>
       <motion.div
         className={classes.card}
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
+        transition={{ duration: 0.3 }}
       >
         {isNewProduct ? <Chip label="New" className={classes.iconNew} /> : null}
         <figure>
@@ -33,6 +34,7 @@ export default function ProductCard({ product }: ProductProps) {
             className={classes.image}
             width={800}
             height={400}
+            loading="eager"
           />
         </figure>
         <div className={classes.textWrapper}>

@@ -1,19 +1,19 @@
-"use server";
+'use server';
 
-import { prisma } from "@/lib/db/prisma";
-import { notFound } from "next/navigation";
-import Image from "next/image";
-import classes from "./product-detail.module.css";
-import ProductPrice from "@/components/product/product-price";
-import { Metadata } from "next";
-import { cache } from "react";
-import ProductAddButton from "@/app/products/[id]/product-add-button";
-import { incrementProductQuantity } from "@/actions/action";
+import { prisma } from '@/lib/db/prisma';
+import { notFound } from 'next/navigation';
+import Image from 'next/image';
+import classes from './product-detail.module.css';
+import ProductPrice from '@/components/product/product-price';
+import { Metadata } from 'next';
+import { cache } from 'react';
+import ProductAddButton from '@/app/products/[id]/product-add-button';
+import { incrementProductQuantity } from '@/actions/action';
 
 interface ProductDetailPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 const getProduct = cache(async (id: string) => {
@@ -25,8 +25,9 @@ const getProduct = cache(async (id: string) => {
 });
 
 export async function generateMetadata({
-  params: { id },
+  params,
 }: ProductDetailPageProps): Promise<Metadata> {
+  const { id } = await params;
   const product = await getProduct(id);
   return {
     title: `T-shop | ${product.name}`,
@@ -38,8 +39,9 @@ export async function generateMetadata({
 }
 
 export default async function ProductDetailPage({
-  params: { id },
+  params,
 }: ProductDetailPageProps) {
+  const { id } = await params;
   const product = await getProduct(id);
   const { id: productId, name, description, imageUrl, price } = product;
   return (
@@ -52,6 +54,7 @@ export default async function ProductDetailPage({
           height={500}
           className={classes.image}
           priority
+          loading="eager"
         />
       </figure>
       <div>

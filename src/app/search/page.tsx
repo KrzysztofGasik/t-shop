@@ -5,22 +5,24 @@ import { Metadata } from "next";
 import classes from "./search.module.css";
 
 interface SearchPageProps {
-  searchParams: {
+  searchParams: Promise<{
     query: string;
-  };
+  }>;
 }
 
-export function generateMetadata({
-  searchParams: { query },
-}: SearchPageProps): Metadata {
+export async function generateMetadata({
+  searchParams,
+}: SearchPageProps): Promise<Metadata> {
+  const { query } = await searchParams;
   return {
     title: `T-shop | Search: ${query}`,
   };
 }
 
 export default async function SearchPage({
-  searchParams: { query },
+  searchParams,
 }: SearchPageProps) {
+  const { query } = await searchParams;
   const products = await prisma.product.findMany({
     where: {
       OR: [

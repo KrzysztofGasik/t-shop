@@ -9,10 +9,11 @@ type ProductsProps = {
 };
 
 export default function Products({ products, currentPage }: ProductsProps) {
-  const productList = currentPage === 1 ? products.splice(1) : products;
+  const productList = currentPage === 1 ? products.slice(1) : products;
+
   return (
     <div className={classes.wrapper}>
-      {currentPage === 1 && (
+      {currentPage === 1 && products[0] && (
         <ProductCardFeatured key={products[0].id} product={products[0]} />
       )}
       <div className={classes.list}>

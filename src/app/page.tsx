@@ -4,12 +4,13 @@ import PaginationBar from "@/components/pagination/pagination-bar";
 import classes from "./home.module.css";
 
 interface HomeProps {
-  searchParams: { page: string };
+  searchParams: Promise<{ page?: string }>;
 }
 
 export default async function Home({
-  searchParams: { page = "1" },
+  searchParams,
 }: HomeProps) {
+  const { page = "1" } = await searchParams;
   const totalItemCount = await prisma.product.count();
   const currentPage = Number(page);
   const pageSize = 4;

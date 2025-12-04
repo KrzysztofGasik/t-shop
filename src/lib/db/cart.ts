@@ -1,8 +1,8 @@
-import { prisma } from "@/lib/db/prisma";
-import { cookies } from "next/headers";
-import { Cart, CartItem, Prisma } from "@prisma/client";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/lib/auth";
+import { prisma } from '@/lib/db/prisma';
+import { cookies } from 'next/headers';
+import { Cart, CartItem, Prisma } from '@prisma/client';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/lib/auth';
 
 export type CartWithProducts = Prisma.CartGetPayload<{
   include: { items: { include: { product: true } } };
@@ -27,7 +27,7 @@ export async function getCart(): Promise<ShoppingCart | null> {
       include: { items: { include: { product: true } } },
     });
   } else {
-    const localCartId = cookies().get("localCartId")?.value;
+    const localCartId = (await cookies()).get('localCartId')?.value;
     cart = localCartId
       ? await prisma.cart.findUnique({
           where: { id: localCartId },
@@ -44,7 +44,7 @@ export async function getCart(): Promise<ShoppingCart | null> {
     size: cart.items.reduce((acc, item) => acc + item.quantity, 0),
     subtotal: cart.items.reduce(
       (acc, item) => acc + item.quantity * item.product.price,
-      0,
+      0
     ),
   };
 }
@@ -63,7 +63,7 @@ export async function createCart(): Promise<ShoppingCart> {
     newCart = await prisma.cart.create({
       data: {},
     });
-    cookies().set("localCartId", newCart.id); // encrypt
+    (await cookies()).set('localCartId', newCart.id); // encrypt
   }
 
   return {
@@ -75,7 +75,7 @@ export async function createCart(): Promise<ShoppingCart> {
 }
 
 export async function mergeAnonymousAndUserCart(userId: string) {
-  const localCartId = cookies().get("localCartId")?.value;
+  const localCartId = (await cookies()).get('localCartId')?.value;
   const localCart = localCartId
     ? await prisma.cart.findUnique({
         where: { id: localCartId },
@@ -142,7 +142,7 @@ export async function mergeAnonymousAndUserCart(userId: string) {
     });
 
     // delete cookies for local cart because it's merged
-    cookies().set("localCartId", "");
+    (await cookies()).set('localCartId', '');
   });
 }
 

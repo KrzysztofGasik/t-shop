@@ -1,19 +1,19 @@
-import { InputAdornment, TextField } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import Link from "next/link";
-import Image from "next/image";
-import { redirect } from "next/navigation";
-import classes from "./navigation.module.css";
-import { getCart } from "@/lib/db/cart";
-import ShoppingCartButton from "@/app/navigation/shopping-cart-button";
-import UserMenuButton from "@/app/navigation/user-menu-button";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/lib/auth";
+import { InputAdornment, TextField } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import Link from 'next/link';
+import Image from 'next/image';
+import { redirect } from 'next/navigation';
+import classes from './navigation.module.css';
+import { getCart } from '@/lib/db/cart';
+import ShoppingCartButton from '@/app/navigation/shopping-cart-button';
+import UserMenuButton from '@/app/navigation/user-menu-button';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/lib/auth';
 
 async function searchProducts(formData: FormData) {
-  "use server";
+  'use server';
 
-  const searchQuery = formData.get("searchQuery")?.toString();
+  const searchQuery = formData.get('searchQuery')?.toString();
 
   if (searchQuery) {
     redirect(`/search?query=${searchQuery}`);
@@ -32,8 +32,9 @@ export default async function Navigation() {
               src="/logo.png"
               height={90}
               width={70}
-              alt={"t-shop logo"}
+              alt={'t-shop logo'}
               className={classes.logoImage}
+              loading="eager"
             />
             <span className={classes.logoText}>T-shop</span>
           </Link>
